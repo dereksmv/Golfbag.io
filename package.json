@@ -1,0 +1,29 @@
+{
+  "name": "golfbag.io",
+  "version": "1.0.0",
+  "description": "Curious what your favorite golfer is carrying around in their bag? You can track this and more with Golfbag.io!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lotg515/Golfbag.io.git"
+  },
+  "keywords": [
+    "golf"
+  ],
+  "author": "Derek Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lotg515/Golfbag.io/issues"
+  },
+  "homepage": "https://github.com/lotg515/Golfbag.io#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.6",
+    "nodemon": "^2.0.4"
+  }
+}
