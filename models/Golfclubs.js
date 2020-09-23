@@ -49,6 +49,10 @@ const GolfClubSchema = new Schema({
     image: {
         type: String,
         required: false
+    },
+    year: {
+        type: String,
+        required: false
     }
 
 
