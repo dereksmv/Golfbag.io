@@ -3,7 +3,15 @@ const router = express.Router();
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose")
 const golfclubs = require("./routes/api/golfclubs")
+const bodyParser = require("body-parser");
 const app = express();
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
 
 // DB Config
 const db = process.env.MONGO_URI;
