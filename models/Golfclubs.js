@@ -58,4 +58,5 @@ const GolfClubSchema = new Schema({
 
 })
 
+// eslint-disable-next-line no-undef
 module.exports = golfClubs = mongoose.model("golfClubs", GolfClubSchema);

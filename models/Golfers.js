@@ -11,8 +11,14 @@ const GolferSchema = new Schema({
     last_name: {
         type: String,
         required: true
+    },
+
+    player_image: {
+        type: String,
+        required: true
     }
 
 })
 
+// eslint-disable-next-line no-undef
 module.exports = Golfer = mongoose.model("Golfer", GolferSchema);
