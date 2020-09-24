@@ -5,7 +5,7 @@ const golfClubs = require("../../models/Golfclubs")
 const golfBag = require("../../services/services")
 const multer = require("multer");
 const cloudinary = require("cloudinary");
-const cloudinaryStorage = require("multer-storage-cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 
 cloudinary.config({
@@ -13,24 +13,26 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
     });
-    const storage = cloudinaryStorage({
+    const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     folder: "demo",
     allowedFormats: ["jpg", "png"],
     transformation: [{ width: 500, height: 500, crop: "limit" }]
     });
-    const upload = multer({ storage: storage });  
+    const upload = multer({ storage: storage }); 
 
 
 router.post("/create_new", upload.single('goal_images'), (req, res) => {
     const image = {};
+    
+    console.log(req.body)
+    const newClub = new golfClubs(req.body);
     if (req.file) {
         image.url = req.file.url;
         image.id = req.file.public_id;
+        newClub.image = image.url
         }
-    console.log(req.body)
-    const newClub = new golfClubs(req.body);
-    newClub.image = image.url
+    
     const searchParamaters = { club_type: req.body.club_type, manufacturer: req.body.manufacturer, brand_name: req.body.brand_name }
     golfClubs.findOne(searchParamaters, (err, doc) => {
         if (err) { console.log(err); res.json({message: "Uh oh. Something went wrong."}) }

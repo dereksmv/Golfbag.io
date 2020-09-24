@@ -1,9 +1,14 @@
 const express = require("express");
+// eslint-disable-next-line no-unused-vars
 const router = express.Router();
+// eslint-disable-next-line no-unused-vars
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose")
 const golfclubs = require("./routes/api/golfclubs")
+const golfer = require("./routes/api/golfers")
 const bodyParser = require("body-parser");
+const tournaments = require("./routes/api/tournaments");
+const golfbag = require("./routes/api/golfbags")
 const app = express();
 // Bodyparser middleware
 app.use(
@@ -22,6 +27,12 @@ mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true, useFindA
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
 
-app.listen(port, () => console.log(`Server up and running on port ${port} !`));
+app.listen(port, () => console.log(`Server up and running on port ${port}`));
 
 app.use("/api/golf_clubs", golfclubs);
+
+app.use("/api/golfers", golfer)
+
+app.use("/api/tournaments", tournaments)
+
+app.use("/api/golfbag", golfbag)

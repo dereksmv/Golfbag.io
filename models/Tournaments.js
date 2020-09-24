@@ -1,36 +1,36 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const GolferSchema = new Schema({
+const TournamentSchema = new Schema({
 
-    first_name: {
+    name: {
         type: String,
         required: true
     },
 
-    last_name: {
+    date: {
         type: String,
         required: true
     },
 
-    player_image: {
+    year: {
         type: String,
         required: true
     },
-    
-    sponsorship: {
+
+    course: {
+        type: String,
+        required: true
+    },
+
+    city: {
+        type: String,
+        required: true
+    },
+
+    state: {
         type: String,
         required: false
-    },
-
-    tour: {
-        type: String,
-        required: true
-    },
-
-    rank: {
-        type: String,
-        required: true
     },
 
     country: {
@@ -38,9 +38,12 @@ const GolferSchema = new Schema({
         required: true
     },
 
-
+    winner: {
+        type: String,
+        required: false
+    }
 
 })
 
 // eslint-disable-next-line no-undef
-module.exports = Golfer = mongoose.model("Golfer", GolferSchema);
+module.exports = Tournaments = mongoose.model("Tournaments", TournamentSchema);
