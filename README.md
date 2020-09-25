@@ -29,6 +29,11 @@ index.js - the server is initialized in here
 #### models - create the configurations for objects we store in the database
 #### public - this is our primary react folder - this is the only folder that will be exposed to the public
 
+### How we'll structure Public
+* Public
+  * Components - UI components go here - buttons, headers, etc
+  * Pages - will contain the app pages 
+
 ### API Routes and How Tos
 
 a ":" before a route indicates a parameter. What you put in that field determines what you get back
