@@ -15,13 +15,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Files are in plain text
 
 ### Golfbag.io - Root folder
-tailwind.js - Javascript initialization for Tailwind
-tailwind.config.js - JS config 
-postcss.config.js - handles the processing of our CSS
-package.json - contains config for the entire application
-package-lock.json - contains info about dependencies
-index.js - the server is initialized in here
-.env - contains environmental variables (hidden variables we don't want to expose - database login, etc.)
+tailwind.js - Javascript initialization for Tailwind  
+tailwind.config.js - JS config   
+postcss.config.js - handles the processing of our CSS  
+package.json - contains config for the entire application  
+package-lock.json - contains info about dependencies  
+index.js - the server is initialized in here  
+.env - contains environmental variables (hidden variables we don't want to expose - database login, etc.)  
 #### src - contains config for Redux (Redux is a statewide application state library
 #### services - contains functions we use in the server
 #### routes - contains the various routes we have in the api
