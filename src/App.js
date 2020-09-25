@@ -1,10 +1,12 @@
 import React from 'react';
-import TextBox from '../src/components/inputTextField';
+import InputTextField from '../src/components/inputTextField';
+import InputTextOption from '../src/components/inputTextOption';
 
 function App() {
   return (
     <div>
-      <TextBox></TextBox>
+      <InputTextField></InputTextField>
+      <InputTextOption></InputTextOption>
     </div>
   );
 }
