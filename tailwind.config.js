@@ -20,15 +20,15 @@ module.exports = {
       white: '#fff',
 
       gray: {
-        100: '#f7fafc',
-        200: '#edf2f7',
+        100: '#a6a4a2',
+        200: '#F2F2F2',
         300: '#e2e8f0',
         400: '#cbd5e0',
         500: '#a0aec0',
         600: '#718096',
         700: '#4a5568',
         800: '#2d3748',
-        900: '#1a202c',
+        900: '#a6a6a6',
       },
       red: {
         100: '#fff5f5',
@@ -213,7 +213,11 @@ module.exports = {
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
       none: 'none',
     },
-    container: {},
+    container: {
+      padding: {
+        default: "2em"
+      }
+    },
     cursor: {
       auto: 'auto',
       default: 'default',
