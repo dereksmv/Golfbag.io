@@ -6,7 +6,7 @@ class InputTextField extends React.Component {
             <div>
                 <label 
                     htmlFor={this.props.name} 
-                    class="flex text-sm mx-2 w-full font-semibold text-gray-700">
+                    class="flex text-sm mx-2 w-full pb-1 font-semibold text-gray-700">
                     {this.props.label}
                 </label>
                 <input 

@@ -15,7 +15,7 @@ export default class CreateABag extends Component {
                 <div>
                     <HeaderOne text="Create New Bag"/>
                     <SelectTourneyandPlayer/>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                         <AddClubForm/>
                         <InputTextField label="Club Brand Name" placeholder="Club Brand Name"/>
                         <InputTextField label="Club Name" placeholder="Club Name"/>
