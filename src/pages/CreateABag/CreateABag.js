@@ -15,6 +15,9 @@ export default class CreateABag extends Component {
                 <div>
                     <HeaderOne text="Create New Bag"/>
                     <SelectTourneyandPlayer/>
+                    <div className="flex w-1/3 pr-2 py-3">
+                        <InputTextField label="Tournament Year" placeholder="Enter Year"/>
+                    </div>
                     <div className="space-y-4">
                         <AddClubForm/>
                         <InputTextField label="Club Brand Name" placeholder="Club Brand Name"/>
