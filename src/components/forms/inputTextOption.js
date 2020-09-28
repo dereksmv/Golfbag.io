@@ -35,9 +35,8 @@ class InputTextOption extends React.Component {
                 <select 
                     id={this.props.id}
                     name={this.props.name}
-                    multiple
-                    aria-label="Option"
-                    class="w-56 form-select h-full pl-2 pr-7 border rounded-md shadow-sm py-2 px-3 text-gray-700">
+                    option
+                    class="w-full form-select h-full pl-2 pr-7 border rounded-md shadow-sm py-2 px-3 text-gray-700">
                 </select>
             </div>
 

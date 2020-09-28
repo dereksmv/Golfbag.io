@@ -14,7 +14,7 @@ class InputTextField extends React.Component {
                     name={this.props.name}
                     id={this.props.id}
                     placeholder={this.props.placeholder} 
-                    class="w-full py-2 px-3 text-gray-700" />
+                    class="w-full py-2 px-3 text-gray-700 rounded-md" />
               
             </div>
 
