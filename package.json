@@ -28,7 +28,7 @@
   },
   "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "npm index.js",
+    "start": "node index.js",
     "go": "npm run watch:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
