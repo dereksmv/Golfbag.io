@@ -11,7 +11,6 @@ router.post("/create_new", function(req, res) {
 router.get("/search/:first_name/:last_name/:tournament", function(req, res) {
     let player = {first_name: db.removeDashes(req.params.first_name), last_name: db.removeDashes(req.params.last_name)}
     let searchParameters = { player: player, tournament: db.removeDashes(req.params.tournament) }
-    console.log(searchParameters)
     db.retrieve(req, res, searchParameters, golfBags)
 })
 
