@@ -4,9 +4,12 @@ const router = express.Router();
 // eslint-disable-next-line no-unused-vars
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose")
-const golfclubs = require("./routes/api/golfclubs")
 const golfer = require("./routes/api/golfers")
 const bodyParser = require("body-parser");
+const path = require("path")
+
+
+const golfclubs = require("./routes/api/golfclubs")
 const tournaments = require("./routes/api/tournaments");
 const golfbag = require("./routes/api/golfbags")
 const app = express();
@@ -28,6 +31,11 @@ const port = process.env.PORT || 5000; // process.env.port is Heroku's port if y
 
 
 app.listen(port, () => console.log(`Server up and running on port ${port}`));
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use("/api/golf_clubs", golfclubs);
 
