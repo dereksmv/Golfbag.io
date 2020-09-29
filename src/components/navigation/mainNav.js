@@ -3,7 +3,7 @@ import React from 'react';
 class MainNav extends React.Component {
     render() {
         return(
-            <div className="w-full>
+            <div className="w-full">
             <div class="fixed bottom-0 flex justify-center shadow-lg bg-gradient-to-t from-gray-100 to to-transparent">
                 <div class="absolute rounded-full shadow-lg">
                     <svg 
