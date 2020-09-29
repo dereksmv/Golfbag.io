@@ -7,7 +7,7 @@ module.exports = {
   separator: ':',
   theme: {
     screens: {
-      sm: '640px',
+      sm: '384px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
@@ -698,7 +698,7 @@ module.exports = {
     divideOpacity: ['responsive'],
     divideStyle: ['responsive'],
     divideWidth: ['responsive'],
-    fill: ['responsive'],
+    fill: ['responsive', 'hover', 'focus'],
     flex: ['responsive'],
     flexDirection: ['responsive'],
     flexGrow: ['responsive'],

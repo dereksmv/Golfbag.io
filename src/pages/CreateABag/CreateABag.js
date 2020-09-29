@@ -6,6 +6,7 @@ import AddClubForm from "./PageComponents/AddClubForm"
 import InputTextField from '../../components/forms/inputTextField'
 import MainButton from '../../components/buttons/mainButton'
 import SecondaryButton from '../../components/buttons/secondaryButton'
+import MainNav from '../../components/navigation/mainNav'
 
 import Axios from "axios"
 
@@ -88,9 +89,10 @@ export default class CreateABag extends Component {
         return (
             <div className="flex flex-col max-w-sm container mx-auto">
                 <div>
+                    <MainNav />
                     <HeaderOne text="Create New Bag"/>
                     <SelectTourneyandPlayer/>
-                    <div className="flex w-1/3 pr-2 py-3">
+                    <div className="flex w-1/3 py-3">
                         <InputTextField label="Tournament Year" placeholder="Enter Year"/>
                     </div>
                     <div className="space-y-4">
@@ -111,6 +113,8 @@ export default class CreateABag extends Component {
                         </div>
                     </div>
                 </div>
+                {/*Below is spacing for the navbar on mobile*/}
+                <div class="h-20" />
             </div>
         )
     }
