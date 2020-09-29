@@ -26,6 +26,7 @@
     "redux": "^4.0.5",
     "tailwind": "^4.0.0"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
     "build": "npm run build:css && react-scripts build",

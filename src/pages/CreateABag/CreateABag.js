@@ -3,15 +3,90 @@ import React, { Component } from 'react'
 import HeaderOne from "../../components/headers/HeaderOne"
 import SelectTourneyandPlayer from "./PageComponents/SelectTourneyandPlayer"
 import AddClubForm from "./PageComponents/AddClubForm"
-import HeaderTwo from '../../components/headers/HeaderTwo'
 import InputTextField from '../../components/forms/inputTextField'
 import MainButton from '../../components/buttons/mainButton'
 import SecondaryButton from '../../components/buttons/secondaryButton'
 
+import Axios from "axios"
+
+
 export default class CreateABag extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            manufacturerOptions: ["Select a club"],
+            brandOptions: ["Select a club"]
+        }
+        this.handleOptions = this.handleOptions.bind(this)
+        this.handleBrandOptions = this.handleBrandOptions.bind(this)
+    }
+
+    handleBrandOptions(e, params) {
+        let searchParam = params
+        this.setState({
+            brand_name: searchParam
+        }, function() {Axios.get(`/api/golf_clubs/search/${this.state.club_type}/${searchParam}`)
+                .then(res => {
+                    let selectField = document.getElementById("brand_name")
+                    selectField.innerHTML = '';
+                    let manufacturers = [];
+                    
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data.length > 0) {
+                        if (res.data[i].brand_name !== searchParam) {
+                            manufacturers.push(res.data[i].brand_name)
+                            let newOption = document.createElement("option");
+                            newOption.id = res.data[i].brand_name;
+                            newOption.textContent = res.data[i].brand_name
+                            selectField.appendChild(newOption)
+                        }                      
+                   
+                     } }        
+                })   
+               
+            }     
+        )
+    }
+    
+    handleOptions(e) {
+        let searchParam = e.target.value
+        this.setState({
+            [e.target.id]: searchParam
+        }, function() {Axios.get(`/api/golf_clubs/search/${searchParam}`)
+                .then(res => {
+                    let selectField = document.getElementById("manufacturer")
+                    selectField.innerHTML = '';
+                    for (var i = 0; i < res.data.length; i++) {
+                        if (res.data.length > 0) {
+                        if (res.data[i].manufacturer !== searchParam) {
+                            let newOption = document.createElement("option");
+                            newOption.id = res.data[i].manufacturer;
+                            newOption.textContent = res.data[i].manufacturer
+                            selectField.appendChild(newOption)
+                                    
+                        }    
+                        if (res.data[0].manufacturer !== undefined) {
+                            let initialValue = res.data[0].manufacturer
+                            this.handleBrandOptions(e, initialValue)
+                         }                  
+                        
+                     } }
+                     
+                    
+                           
+                })   
+               
+            } 
+            
+             
+        )
+        
+    }
+
+
     render() {
         return (
-            <div className="flex flex-col max-w-sm mx-auto">
+            <div className="flex flex-col max-w-sm container mx-auto">
                 <div>
                     <HeaderOne text="Create New Bag"/>
                     <SelectTourneyandPlayer/>
@@ -19,81 +94,13 @@ export default class CreateABag extends Component {
                         <InputTextField label="Tournament Year" placeholder="Enter Year"/>
                     </div>
                     <div className="space-y-4">
-                        <AddClubForm/>
-                        <InputTextField label="Club Brand Name" placeholder="Club Brand Name"/>
-                        <InputTextField label="Club Name" placeholder="Club Name"/>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Lie Angle" placeholder="Lie Angle"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Loft Angle" placeholder="Loft Angle"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Length" placeholder="Length"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Adjustment" placeholder="Adjustment"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Offset (Wedge Only)" placeholder="Offset"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Grind Type (Wedge Only)" placeholder="Grind Type"/>
-                            </div>
-                        </div>
-                        <InputTextField label="Shaft Brand Name" placeholder="Enter Shaft Brand Name"/>
-                        <InputTextField label="Shaft Name" placeholder="Enter Shaft Name"/>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Flex" placeholder="Enter Flex"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Weight" placeholder="Enter Weight"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Length" placeholder="Length"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Torque" placeholder="Torque"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Tip" placeholder="Enter Tip"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Launch Angle" placeholder="Low/Mid/High"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Shaft Material" placeholder="Steel or Graphite"/>
-                            </div>
-                        </div>
-                        <InputTextField label="Grip Brand Name" placeholder="Enter Grip Brand Name"/>
-                        <InputTextField label="Grip Name" placeholder="Enter Grip Name"/>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Grip Diameter" placeholder="Enter Grip Diameter"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Wrap Type" placeholder="Enter Wrap Type"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Core (Putter Only)" placeholder="Putter Core Type"/>
-                            </div>
-                        </div>
-                        <InputTextField label="Ball Brand Name" placeholder="Enter Ball Brand Name"/>
-                        <InputTextField label="Ball Name" placeholder="Enter Ball Name"/>
+                        <AddClubForm
+                        onChange = {(e) => this.handleOptions(e)}
+                        manufacturerOptions={this.state.manufacturerOptions}
+                        manufacturerOnChange={(e)=> this.handleBrandOptions(e, e.target.value)}
+                        brandOptions={this.state.brandOptions}
+                        />
+                        
                     </div>
                     <div className="flex flex-row">
                         <div className="py-10">

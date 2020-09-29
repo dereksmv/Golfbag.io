@@ -7,7 +7,7 @@ class InputTextOption extends React.Component {
     }
 
     addOptions(arr) {
-        let selectEl = document.getElementById("select")
+        let selectEl = document.getElementById(this.props.id)
         for (var i = 0; i < arr.length; i++) {
             
             let newOption = document.createElement("option")
@@ -35,7 +35,8 @@ class InputTextOption extends React.Component {
                 <select 
                     id={this.props.id}
                     name={this.props.name}
-                    option
+                    onChange={this.props.onChange}
+                    onBlur={this.props.onBlur}
                     class="w-full form-select h-full pl-2 pr-7 border rounded-md shadow-sm py-2 px-3 text-gray-700">
                 </select>
             </div>

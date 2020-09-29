@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const golfClubs = require("../../models/Golfclubs")
 const golfBag = require("../../services/services")
+const db = require("../../services/databaseCalls")
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
@@ -55,8 +56,20 @@ router.post("/create_new", upload.single('goal_images'), (req, res) => {
     })
 })
 
+router.get("/search/:club_type", (req, res) => {
+    let searchParamaters = {club_type: req.params.club_type}
+    db.findAll(req, res, searchParamaters, golfClubs)
+})
+
+router.get("/search/:club_type/:manufacturer", (req, res) => {
+    let searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer};
+    db.findAll(req, res, searchParamaters, golfClubs)
+})
+
 router.get("/:manufacturer/:brand_name/:club_type", (req, res) => {
     golfBag.retrieveClubData(req, res)
 })
+
+
 
 module.exports = router;
