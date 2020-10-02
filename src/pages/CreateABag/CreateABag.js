@@ -4,9 +4,7 @@ import HeaderOne from "../../components/headers/HeaderOne"
 import SelectTourneyandPlayer from "./PageComponents/SelectTourneyandPlayer"
 import AddClubForm from "./PageComponents/AddClubForm"
 import InputTextField from '../../components/forms/inputTextField'
-import MainButton from '../../components/buttons/mainButton'
-import SecondaryButton from '../../components/buttons/secondaryButton'
-import MainNav from '../../components/navigation/mainNav'
+import AddClubButtons from "./PageComponents/AddClubButtons"
 
 import Axios from "axios"
 
@@ -89,7 +87,6 @@ export default class CreateABag extends Component {
         return (
             <div className="flex flex-col max-w-sm container mx-auto">
                 <div>
-                    <MainNav />
                     <HeaderOne text="Create New Bag"/>
                     <SelectTourneyandPlayer/>
                     <div className="flex w-1/3 py-3">
@@ -104,14 +101,7 @@ export default class CreateABag extends Component {
                         />
                         
                     </div>
-                    <div className="flex flex-row">
-                        <div className="py-10">
-                            <MainButton />
-                        </div>
-                        <div className="py-10">
-                            <SecondaryButton></SecondaryButton>
-                        </div>
-                    </div>
+                    <AddClubButtons/>
                 </div>
                 {/*Below is spacing for the navbar on mobile*/}
                 <div class="h-20" />

@@ -14,6 +14,12 @@ const GolfClubSchema = new Schema({
         type: String,
         required: true
     },
+
+    club_name: {
+        type: String,
+        required: true
+    },
+
     shaft: {
         type: String,
         required: true
