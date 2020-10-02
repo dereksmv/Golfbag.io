@@ -23,9 +23,9 @@ cloudinary.config({
     const upload = multer({ storage: storage }); 
 
 
-router.post("/create_new", upload.single('goal_images'), (req, res) => {
+router.post("/create_new", upload.single('image'), (req, res) => {
     const image = {};
-    
+    console.log("ping")
     console.log(req.body)
     const newClub = new golfClubs(req.body);
     if (req.file) {
@@ -34,7 +34,7 @@ router.post("/create_new", upload.single('goal_images'), (req, res) => {
         newClub.image = image.url
         }
     
-    const searchParamaters = { club_type: req.body.club_type, manufacturer: req.body.manufacturer, brand_name: req.body.brand_name }
+    const searchParamaters = { club_type: req.body.club_type, manufacturer: req.body.manufacturer, brand_name: req.body.brand_name, club_name: req.body.club_name }
     golfClubs.findOne(searchParamaters, (err, doc) => {
         if (err) { console.log(err); res.json({message: "Uh oh. Something went wrong."}) }
         if (doc) {
@@ -61,14 +61,22 @@ router.get("/search/:club_type", (req, res) => {
     db.findAll(req, res, searchParamaters, golfClubs)
 })
 
-router.get("/search/:club_type/:manufacturer", (req, res) => {
-    let searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer};
+router.get("/search/:club_type/:manufacturer/:brand_name", (req, res) => {
+    if (req.params.brand_name === "NULL") {
+    var searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer};
+    } else {
+        var searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer, brand_name: req.params.brand_name}
+    }
     db.findAll(req, res, searchParamaters, golfClubs)
 })
 
-router.get("/:manufacturer/:brand_name/:club_type", (req, res) => {
+
+
+router.get("/:manufacturer/:brand_name/:club_type/:club_name", (req, res) => {
     golfBag.retrieveClubData(req, res)
 })
+
+
 
 
 

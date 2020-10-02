@@ -24,6 +24,7 @@ const GolfClubSchema = new Schema({
         type: String,
         required: true
     },
+    
     loft: {
         type: String,
         required: false

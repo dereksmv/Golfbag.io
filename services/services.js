@@ -8,10 +8,11 @@ module.exports = {
     errMessage: "Oops! Something went wrong.",
 
     retrieveClubData: (req, res) => {
-        let manufacturer = module.exports.removeDashes(req.params.manufacturer);
-    let brandName = module.exports.removeDashes(req.params.brand_name);
+    let brand_name = module.exports.removeDashes(req.params.brand_name);
+    let manufacturer = module.exports.removeDashes(req.params.manufacturer);
     let clubType = module.exports.removeDashes(req.params.club_type);
-    let searchParams = { manufacturer: manufacturer, brand_name: brandName, club_type: clubType };
+    let club_name = module.exports.removeDashes(req.params.club_name)
+    let searchParams = { manufacturer: manufacturer, brand_name: brand_name, club_type: clubType, club_name: club_name };
     golfClubs.findOne(searchParams, (err, doc) => {
         if (err) {
             console.log(err);
