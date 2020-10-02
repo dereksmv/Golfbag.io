@@ -1,13 +1,29 @@
+
+
 module.exports = {
   future: {},
-  purge: [],
+  purge: [
+    "./src/pages/CreateABag/CreateABag.js",
+    "./src/pages/CreateABag/PageComponents/AddClubButtons.js",
+    "./src/pages/CreateABag/PageComponents/AddClubForm.js",
+    "./src/pages/CreateABag/PageComponents/SelectTourneyAndPlayer.js",
+    "./src/App.js",
+    "./src/components/buttons/mainButton.js",
+    "./src/components/buttons/secondaryButton.js",
+    "./src/components/forms/inputTextFields.js",
+    "./src/components/forms/inputTextOptions.js",
+    "./src/components/headers/HeaderOne.js",
+    "./src/components/headers/HeaderTwo.js",
+    "/src/components/navigation/mainNav.js",
+    ""
+  ],
   target: 'relaxed',
   prefix: '',
   important: false,
   separator: ':',
   theme: {
     screens: {
-      sm: '640px',
+      sm: '384px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',

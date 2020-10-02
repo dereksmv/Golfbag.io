@@ -30,7 +30,13 @@ export default class AddClubForm extends Component {
                 options= {this.props.brandOptions}
                 onChange = {this.props.brandOnChange}
                 />
-                        <InputTextField label="Club Name" placeholder="Club Name"/>
+                <InputTextOptions
+                name="club_name"
+                label="Club Name"
+                id="club_name"
+                options={this.props.clubNameOptions}
+                onChange={this.props.clubNameOnChange}
+                />
                         <div className="flex flex-row">
                             <div className="flex w-1/2 pr-2">
                                 <InputTextField label="Lie Angle" placeholder="Lie Angle"/>
