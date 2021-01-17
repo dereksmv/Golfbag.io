@@ -6,7 +6,8 @@ const path = require("path");
 const Golfer = require("../../models/Golfers")
 
 const golfer = require("../../services/golfers")
-const db = require("../../services/databaseCalls")
+const db = require("../../services/databaseCalls");
+const Golfers = require("../../models/Golfers");
 
 
 const storage = multer.diskStorage({
@@ -29,6 +30,10 @@ router.get("/search/:first_name/:last_name", golfer.retrieveGolfer)
 router.get("/find/", (req, res) => {
     console.log(req.query)
     db.textSearchDB(req, res, req.query.searchParams, Golfer)
+})
+
+router.get("/all", (req, res) => {
+    db.findAll(req, res, {}, Golfers)
 })
 
 module.exports = router
