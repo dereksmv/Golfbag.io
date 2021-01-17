@@ -6,13 +6,12 @@ const path = require("path");
 const Golfer = require("../../models/Golfers")
 
 const golfer = require("../../services/golfers")
-const db = require("../../services/databaseCalls");
-const Golfers = require("../../models/Golfers");
+const db = require("../../services/databaseCalls")
 
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, path.join(__dirname + '../../../uploads/'));
+        cb(null, path.join(__dirname+ '../../../public/uploads'));
     },
 
     // By default, multer removes file extensions so let's add them back
@@ -32,8 +31,8 @@ router.get("/find/", (req, res) => {
     db.textSearchDB(req, res, req.query.searchParams, Golfer)
 })
 
-router.get("/all", (req, res) => {
-    db.findAll(req, res, {}, Golfers)
-})
+    router.get("/all", (req, res) => {
+        db.findAll(req, res, {}, Golfer)
+    })
 
 module.exports = router

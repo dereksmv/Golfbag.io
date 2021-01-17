@@ -7,9 +7,9 @@ module.exports = {
     saveGolfer: function(req, res) {
         let searchParams = {first_name: req.body.first_name, last_name: req.body.last_name};
         let newGolfer = new Golfers(req.body);
-        newGolfer.player_image = req.file.path;;
-        req.body.player_image = req.file.path
-        console.log(newGolfer.player_image);
+        newGolfer.player_image = req.file.path;
+        req.body.player_image = req.file.path;
+        console.log("here");
         Golfers.findOne(searchParams, (err, doc) => {
             if (err) {
                 console.log(err);
@@ -19,11 +19,12 @@ module.exports = {
                     if (err) {
                         console.log(err)
                     } if (updated) {
-                        console.log(req.body.player_image);
+                        console.log(req.file.path);
                         res.json({message: "Successfully made updates to " + searchParams.first_name + " " + searchParams.last_name})
                     }
                 })
                 } else {
+
                     newGolfer.save((err, doc) => {
                         if (err) {
                             console.log(err);

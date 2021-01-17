@@ -29,7 +29,7 @@ class playerCard extends React.Component {
                     rank.textContent = element.rank;
                     tour.textContent = element.tour;
 
-                    playerImage.style = "width: 400px;"
+                    playerImage.style = "width: 200px; height: 200px;"
                     
                     styledContainer.appendChild(first_name);
                     styledContainer.appendChild(last_name);
