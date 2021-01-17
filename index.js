@@ -45,3 +45,7 @@ app.use("/api/golfers", golfer)
 app.use("/api/tournaments", tournaments)
 
 app.use("/api/golfbag", golfbag)
+
+app.get('*', function(req, res) {
+  return res.sendFile(path.resolve( __dirname, 'build' , 'index.html'));
+})
