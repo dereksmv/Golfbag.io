@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 const db = process.env.MONGO_URI;
 // Connect to MongoDB
 mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false } )
-  .then(() => console.log("MongoDB successfully connected"))
+  .then(() => console.log("MongoDB successfully connected"));
   .catch(err => console.log(err));
 const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
