@@ -55,6 +55,17 @@ module.exports = {
                 res.json({message: "Not found."})
             }
         })
+    },
+
+    textSearchDB: function(req, res, searchParams, schema) {
+        schema.find({ $text: {$search: searchParams} }, (err, doc) => {
+            if (err) {
+                console.log(err);
+            } if (doc) {
+                console.log(doc);
+                res.send(doc);
+            }
+        })
     }
 
     

@@ -5,12 +5,14 @@ const GolferSchema = new Schema({
 
     first_name: {
         type: String,
-        required: true
+        required: true,
+        text: true
     },
 
     last_name: {
         type: String,
-        required: true
+        required: true,
+        text: true
     },
 
     player_image: {

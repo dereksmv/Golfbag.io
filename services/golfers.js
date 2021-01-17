@@ -1,23 +1,25 @@
 const Golfers = require("../models/Golfers");
 
+
+
 module.exports = {
-    searchParameters: function(obj) {
-        return  obj.body
-    },
 
     saveGolfer: function(req, res) {
-        
-        let searchParams = module.exports.searchParameters(req);
-        let newGolfer = new Golfers(searchParams)
+        let searchParams = {first_name: req.body.first_name, last_name: req.body.last_name};
+        let newGolfer = new Golfers(req.body);
+        newGolfer.player_image = req.file.path;;
+        req.body.player_image = req.file.path
+        console.log(newGolfer.player_image);
         Golfers.findOne(searchParams, (err, doc) => {
             if (err) {
                 console.log(err);
                 res.json({message: "Oops! Something went wrong!"})
             } if (doc) {
-                Golfers.updateOne(searchParams, (err, updated) => {
+                Golfers.updateOne(searchParams, {$set: req.body}, (err, updated) => {
                     if (err) {
                         console.log(err)
                     } if (updated) {
+                        console.log(req.body.player_image);
                         res.json({message: "Successfully made updates to " + searchParams.first_name + " " + searchParams.last_name})
                     }
                 })

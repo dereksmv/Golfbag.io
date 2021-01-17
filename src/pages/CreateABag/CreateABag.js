@@ -13,13 +13,50 @@ export default class CreateABag extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            manufacturerOptions: ["Select a club"],
-            brandOptions: ["Select a club"],
-            clubNameOptions: ["Select a club"]
-        }
+            searchResults: []
+        };
+
+        this.suggestedSearch = this.suggestedSearch.bind(this);
+        this.textSearch = this.textSearch.bind(this);
         this.handleOptions = this.handleOptions.bind(this)
         this.handleBrandOptions = this.handleBrandOptions.bind(this)
         this.handleNameOptions = this.handleNameOptions.bind(this)
+    }
+
+    suggestedSearch() {
+        var arr = this.state.searchResults;
+        console.log(arr);
+        let listContainer = document.getElementById("search-results");
+        listContainer.innerHTML = "";
+        if (arr.length > 0) {
+        for (var i = 0; i < arr.length; i++) {
+            let listItem = document.createElement("li");
+            listItem.textContent = arr[i].first_name + " " + arr[i].last_name;
+            listContainer.appendChild(listItem);
+        }
+    } else {
+
+    }
+    }
+
+    textSearch(e) {
+        let listContainer = document.getElementById("search-results");
+        listContainer.innerHTML = "";
+        Axios.get("/api/golfers/find", {
+            params: {
+                searchParams: e.target.value
+                }
+            })
+             .then(res => {
+                 if (res.data.length > 0) {
+                 this.setState({
+                     searchResults: res.data
+                 }, this.suggestedSearch())
+             } else {
+                 return;
+             }
+            })  
+                   
     }
 
     handleNameOptions(e, params) {
@@ -28,6 +65,10 @@ export default class CreateABag extends Component {
             club_name: searchParam
         }, function() {Axios.get(`/api/golf_clubs/search/${this.state.club_type}/${this.state.brand_name}/${searchParam}`)
                 .then(res => {
+                    
+                    this.setState(
+                        res.data[0]
+                    )
                     let selectField = document.getElementById("club_name")
                     selectField.innerHTML = '';
                     let club_names = [];      
@@ -40,7 +81,7 @@ export default class CreateABag extends Component {
                             newOption.textContent = res.data[i].club_name
                             selectField.appendChild(newOption)
                             }
-                     } }        
+                     } }  
                 })
             }     
         )
@@ -120,7 +161,9 @@ export default class CreateABag extends Component {
             <div className="flex flex-col max-w-sm container mx-auto">
                 <div>
                     <HeaderOne text="Create New Bag"/>
-                    <SelectTourneyandPlayer/>
+                    <SelectTourneyandPlayer
+                    golferOnChange = {(e) => {this.textSearch(e)}}
+                    />
                     <div className="flex w-1/3 py-3">
                         <InputTextField label="Tournament Year" placeholder="Enter Year"/>
                     </div>
@@ -131,6 +174,8 @@ export default class CreateABag extends Component {
                         manufacturerOnChange={(e)=> this.handleBrandOptions(e, e.target.value)}
                         brandOptions={this.state.brandOptions}
                         clubNameOptions={this.state.clubNameOptions}
+                        length={this.state.length}
+                        shaft={this.state.shaft}
                         />
                         
                     </div>

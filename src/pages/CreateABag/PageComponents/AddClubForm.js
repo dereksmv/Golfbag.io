@@ -5,7 +5,7 @@ import InputTextField from "../../../components/forms/inputTextField"
 
 export default class AddClubForm extends Component {
     render() {
-        let clubs = ["Select a club", "Driver", "3-Wood", "2 Iron", "3 Iron", "4 Iron", "5 Iron", "6 Iron", "7 Iron", "8 Iron", "9 Iron", "Wedge", "Putter"]
+        let clubs = ["Driver", "3-Wood", "2 Iron", "3 Iron", "4 Iron", "5 Iron", "6 Iron", "7 Iron", "8 Iron", "9 Iron", "Wedge", "Putter"]
         return (
             <div>
                 <HeaderTwo text="Add club to bag"/>
@@ -13,6 +13,7 @@ export default class AddClubForm extends Component {
                 name="club-form"
                 label="Select a club"
                 id="club_type"
+                defaultText="Please select a club"
                 options = {clubs}
                 onChange={this.props.onChange}
                 />
@@ -22,6 +23,7 @@ export default class AddClubForm extends Component {
                 id="manufacturer"
                 options = {this.props.manufacturerOptions}
                 onChange = {this.props.manufacturerOnChange}
+                defaultText="Please select a club"
                 />
                 <InputTextOptions 
                 name="brand_name"
@@ -29,6 +31,7 @@ export default class AddClubForm extends Component {
                 id="brand_name"
                 options= {this.props.brandOptions}
                 onChange = {this.props.brandOnChange}
+                defaultText="Please select a club"
                 />
                 <InputTextOptions
                 name="club_name"
@@ -36,6 +39,7 @@ export default class AddClubForm extends Component {
                 id="club_name"
                 options={this.props.clubNameOptions}
                 onChange={this.props.clubNameOnChange}
+                defaultText="Please select a club"
                 />
                         <div className="flex flex-row">
                             <div className="flex w-1/2 pr-2">
@@ -73,7 +77,7 @@ export default class AddClubForm extends Component {
                         </div>
                         <div className="flex flex-row">
                             <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Length" placeholder="Length"/>
+                                <InputTextField label="Length" id="length" value={this.props.length} placeholder="Length"/>
                             </div>
                             <div className="flex w-1/2 pl-2">
                                 <InputTextField label="Torque" placeholder="Torque"/>
@@ -89,7 +93,7 @@ export default class AddClubForm extends Component {
                         </div>
                         <div className="flex flex-row">
                             <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Shaft Material" placeholder="Steel or Graphite"/>
+                                <InputTextField label="Shaft Material" value={this.props.shaft}/>
                             </div>
                         </div>
                         <InputTextField label="Grip Brand Name" placeholder="Enter Grip Brand Name"/>

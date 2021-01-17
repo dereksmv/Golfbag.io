@@ -63,7 +63,7 @@ router.get("/search/:club_type", (req, res) => {
 
 router.get("/search/:club_type/:manufacturer/:brand_name", (req, res) => {
     if (req.params.brand_name === "NULL") {
-    var searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer};
+        var searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer};
     } else {
         var searchParamaters = {club_type: req.params.club_type, manufacturer: req.params.manufacturer, brand_name: req.params.brand_name}
     }
