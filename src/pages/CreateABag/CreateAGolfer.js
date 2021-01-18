@@ -35,7 +35,8 @@ export default class CreateAGolfer extends Component {
             formdata.append("player_image", fileinput);
             formdata.append("tour", this.state.tour);
             formdata.append("rank", this.state.rank);
-            formdata.append("country", this.state.country)
+            formdata.append("country", this.state.country);
+            formdata.append("sponsor", this.state.sponsorships);
             Axios.post("/api/golfers/create/new", formdata)
                  .then(
                      res => {

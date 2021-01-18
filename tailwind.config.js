@@ -15,7 +15,7 @@ module.exports = {
     "./src/components/headers/HeaderOne.js",
     "./src/components/headers/HeaderTwo.js",
     "/src/components/navigation/mainNav.js",
-    ""
+    "/public/index.html"
   ],
   target: 'relaxed',
   prefix: '',
@@ -264,21 +264,7 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
-      sans: [
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
+      sans: ["Barlow", "sans-serif"],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
     },
