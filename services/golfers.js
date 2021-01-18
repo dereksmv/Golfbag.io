@@ -9,7 +9,7 @@ module.exports = {
         let newGolfer = new Golfers(req.body);
         newGolfer.player_image = req.file.path;
         req.body.player_image = req.file.path;
-        console.log("here");
+        console.log(req.file.path )
         Golfers.findOne(searchParams, (err, doc) => {
             if (err) {
                 console.log(err);

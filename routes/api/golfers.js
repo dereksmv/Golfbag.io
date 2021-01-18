@@ -8,21 +8,16 @@ const Golfer = require("../../models/Golfers")
 const golfer = require("../../services/golfers")
 const db = require("../../services/databaseCalls")
 
+const multerGoogleStorage = require("multer-google-storage");
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, path.join(__dirname+ '../../../public/uploads'));
-    },
-
-    // By default, multer removes file extensions so let's add them back
-    filename: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + req.body.first_name + "-" + req.body.last_name + path.extname(file.originalname));
-    }
+var uploadHandler = multer({
+  storage: multerGoogleStorage.storageEngine()
 });
 
-const upload = multer({ storage: storage });
 
-router.post("/create/new", upload.single('player_image'), golfer.saveGolfer)
+
+
+router.post("/create/new", uploadHandler.single('player_image'), golfer.saveGolfer)
 
 router.get("/search/:first_name/:last_name", golfer.retrieveGolfer)
 

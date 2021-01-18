@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import { grey } from "chalk";
+
 
 class playerCard extends React.Component {
     constructor(props) {
@@ -23,8 +23,6 @@ class playerCard extends React.Component {
                     let rank = document.createElement("p");
                     let tour = document.createElement("p");
                     let row = document.createElement("hr");
-
-                    row.classList.add(grey);
 
                     first_name.textContent = element.first_name;
                     last_name.textContent = element.last_name;
