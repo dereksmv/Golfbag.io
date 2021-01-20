@@ -4,6 +4,11 @@ const Golfers = require("../models/Golfers");
 
 module.exports = {
 
+    returnCountryFromCountryCode: function(obj, searchParams) {
+        console.log(obj[searchParams])
+        return obj[searchParams]
+    },
+
     saveGolfer: function(req, res) {
         let searchParams = {first_name: req.body.first_name, last_name: req.body.last_name};
         let newGolfer = new Golfers(req.body);

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@agney/react-loading": "^0.1.2",
     "@google-cloud/storage": "^5.7.2",
     "@tailwindcss/ui": "^0.6.2",
     "@testing-library/jest-dom": "^4.2.4",
@@ -23,6 +24,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
+    "react-spinners-css": "^1.2.2",
     "redux": "^4.0.5",
     "tailwind": "^4.0.0"
   },

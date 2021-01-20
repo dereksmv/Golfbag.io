@@ -18,7 +18,7 @@ class InputTextOption extends React.Component {
     }
     } 
 
-    componentDidMount() {
+    componentDidUpdate() {
         this.addOptions(this.props.options)
     }
 

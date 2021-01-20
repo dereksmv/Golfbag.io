@@ -50,6 +50,7 @@ module.exports = {
                 console.log(err);
                 res.json({message: "Sorry! Something went wrong."})
             } if (doc) {
+            
                 res.json(doc)
             } else {
                 res.json({message: "Not found."})
