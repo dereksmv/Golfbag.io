@@ -12,10 +12,10 @@ class PlayersView extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.state = {
             API_CALL: "/api/golfers/all/",
-            loading: false,
             country: false,
             tour: false,
-            sponsorship: false
+            sponsorship: false,
+            loading: true
         }
     }
 
@@ -35,6 +35,12 @@ class PlayersView extends React.Component {
    })
     }
 
+    componentDidMount() {
+        this.setState({
+            loading: false
+        })
+    }
+
 
     handleChange(e) {
         this.setState({
@@ -47,12 +53,13 @@ class PlayersView extends React.Component {
 
 
     render() {
+        if (this.state.loading) {
+            return (
+                <Circle/>
+            )
+        }
         return (
-            this.state.loading ? 
-            <div>
-             <Circle></Circle>
-            </div>
-:
+
             <div>
                 <PlayerCard
                 API_CALL = {this.state.API_CALL}

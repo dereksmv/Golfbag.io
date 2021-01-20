@@ -1,16 +1,23 @@
 import React from 'react';
 
+
 class InputTextOption extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            options: []
+        }
         this.addOptions = this.addOptions.bind(this)
     }
 
     addOptions(arr) {
+        
+
         if(arr !== undefined) {
         for (var i = 0; i < arr.length; i++) {
             
             let newOption = document.createElement("option")
+
             newOption.textContent = arr[i]
             newOption.classList.add("text-gray-700")
             document.getElementById(this.props.id).appendChild(newOption)
@@ -18,7 +25,29 @@ class InputTextOption extends React.Component {
     }
     } 
 
-    componentDidUpdate() {
+    componentDidUpdate(nextProps) {
+        
+        this.addOptions(this.props.options)
+        
+    }
+
+    shouldComponentUpdate(nextProps) {
+        for (var i = 0; i < nextProps.options.length; i++) {
+            if (this.props.options === undefined) {
+                return true
+            }
+            if (this.props.options[i] !== nextProps.options[i]) {
+                return true
+            }
+         else {
+            return false
+        }
+    }
+}
+ 
+
+
+    componentDidMount() {
         this.addOptions(this.props.options)
     }
 

@@ -11,14 +11,34 @@ export default class FilteredView extends Component {
         }
     }
 
+    componentDidMount() {
+        console.log("FilteredView Component Updated")
+        console.log(this.props.tourOptions)
+    }
 
-    shouldComponentUpdate(prevProps) {
+
+    componentDidUpdate() {
+
+    }
+
+    shouldComponentUpdate(nextProps) {
+        if (this.props !== nextProps) {
+            console.log("component should update")
+            return true
+        } else {
+            return false
+        }
+    }
+
+
+  /*  shouldComponentUpdate(prevProps) {
         if (prevProps.sponsorOptions === this.props.sponsorOptions) {
             return false
         } else {
             return true
         }
     }
+    */
 
     render() {
         return (

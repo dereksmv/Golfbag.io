@@ -1,19 +1,12 @@
 import React from "react";
 import Axios from "axios";
 import FilteredView from "../navigation/FilteredView"
-import { Ellipse } from "react-spinners-css"
-
-
 
 class playerCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            sponsorOptions: [],
-            tourOptions: []
-        };
-
-    
+        };    
     };
 
 
@@ -339,13 +332,10 @@ class playerCard extends React.Component {
                      
                     })
                     
-          } else {
-              return false
           }
     }
 
     componentDidMount() {
-        console.log("component mounted")
         function returnCountryCode(a) {
             const countryListAlpha3 = {
                 "AFG": "Afghanistan",
@@ -663,13 +653,13 @@ class playerCard extends React.Component {
                     player_cards.appendChild(listContainer);
                     
 
-                    if (tours.includes(element.tour) === false && this.state.tourOptions.includes(element.tour) === false) {
+                    if (tours.includes(element.tour) === false) {
                         tours.push(element.tour);
                     }
                     if (sponsors.includes(element.sponsorship) === false) {
                         sponsors.push(element.sponsorship)
                     }
-                    if (countries.includes(returnCountryCode(element.country)) === false && this.state.sponsorOptions.includes(element.country) === false) {
+                    if (countries.includes(returnCountryCode(element.country)) === false) {
                         countries.push(returnCountryCode(element.country))
                     }
                     

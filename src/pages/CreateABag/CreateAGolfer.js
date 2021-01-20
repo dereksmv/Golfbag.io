@@ -92,7 +92,7 @@ export default class CreateAGolfer extends Component {
                     id="rank"
                     onChange={(e) => {this.handleChange(e)}}
                     />
-                    <InputTextOption
+                    {/*<InputTextOption
                     id="country"
                     options={[
                         "Afghanistan",
@@ -349,7 +349,7 @@ export default class CreateAGolfer extends Component {
                     label="Country"
                     name="country"
                     onChange={(e) => {this.handleChange(e)}}
-                    />
+                />*/}
                     <InputSubmit
                     onSubmit={(e) => {this.handleSubmit(e)}}
                     />
