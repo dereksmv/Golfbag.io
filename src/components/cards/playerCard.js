@@ -12,7 +12,6 @@ class playerCard extends React.Component {
 
     
     componentDidUpdate(prevProps) {
-        console.log("Update render")
         if (this.props.API_CALL !== prevProps.API_CALL) {
             
             function returnCountryCode(a) {
@@ -610,39 +609,50 @@ class playerCard extends React.Component {
                     let first_name = document.createElement("h1");
                     let last_name = document.createElement("h1");
                     let rank = document.createElement("p");
-                    let country = document.createElement("p");
                     let sponsor = document.createElement("p");
                     let imageContainer = document.createElement("div");
                     let playerDataContainer = document.createElement("div");
+                    let playerImageContainer = document.createElement("div");
                     let additionalDataContainer = document.createElement("div");
+                    let tourType = document.createElement("div");
+                    let cardBottomRow = document.createElement("div");
+
 
                     first_name.textContent = element.first_name.toUpperCase();
                     last_name.textContent = element.last_name;
-                    country.textContent = returnCountryCode(element.country);
                     sponsor.textContent = element.sponsorship || "NA";
-                    playerImage.src = element.player_image;
+                    playerImage.src = "https://pga-tour-res.cloudinary.com/image/upload/c_fill,d_headshots_default.png,f_auto,g_face:center,h_350,q_auto,w_280/headshots_30925.png";
                     rank.textContent = element.tour + " Rank: " + element.rank;
 
                     first_name.classList.add("text-green-500");
                     last_name.classList.add("text-gray-700");
                     rank.classList.add("text-gray-700")
                     sponsor.classList.add("text-gray-700")
+
+                    cardBottomRow.style="display: grid; grid-template-columns: 50% 50%;"
+                    tourType.style = "position: absolute; width: 16px; height: 21px; background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/7/77/PGA_Tour_logo.svg/1200px-PGA_Tour_logo.svg.png); background-repeat: no-repeat; background-size: contain; top: 8px; left: 8px;";
+                    playerImageContainer.style = "margin: auto; height: 100%; position: relative;display: flex;"
+                    listItem.style = "border-style: solid; border-width: 1px 0 3px 0px; border-color: #00e55c; height: 115px; width: 375px;"
+                    playerImage.style = "width: 100%; height: 112px; margin: auto;";
+                    first_name.style="font-size: 18px; text-transform: uppercase; color: #00e55c; padding-top: 8px;"
+                    last_name.style = "font-size: 40px; text-transform: uppercase; color: #606060; margin-top: -10px;"
+                    rank.style = "font-size: 16px; color: #7c7c7c; bottom: 4px; right: 16px;"
+                    sponsor.style = "font-size: 16px; color: #7c7c7c;"
+                    styledContainer.style = "display: grid; grid-template-columns: 25% 75%; grid-gap: 5px"
                     
-                    listItem.style = "border-style: solid; border-width: 1px 0 5px 0px; border-color: #48bb78"
-                    playerImage.style = "width: 75px; height: 75px;"
-                    last_name.style = "font-size: 25px; font-weight: bold;"
-                    rank.style = "font-size: 10px;"
-                    sponsor.style = "font-weight: bold"
-                    styledContainer.style = "display: grid; grid-template-columns: 20% 50% 30%; grid-gap: 5px"
 
-                    imageContainer.appendChild(playerImage);
+                    playerImageContainer.appendChild(tourType);
+                    playerImageContainer.appendChild(playerImage)
+                    imageContainer.appendChild(playerImageContainer);
 
-                    additionalDataContainer.appendChild(country);
-                    additionalDataContainer.appendChild(sponsor)
+
+                    
 
                     playerDataContainer.appendChild(first_name);
                     playerDataContainer.appendChild(last_name);
-                    playerDataContainer.appendChild(rank)
+                    cardBottomRow.appendChild(sponsor);
+                    cardBottomRow.appendChild(rank);
+                    playerDataContainer.appendChild(cardBottomRow);
 
                     styledContainer.appendChild(imageContainer)
                     styledContainer.appendChild(playerDataContainer)
