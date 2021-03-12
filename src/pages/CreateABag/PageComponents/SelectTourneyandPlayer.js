@@ -11,10 +11,10 @@ export default class SelectTourneyandPlayer extends Component {
                     label="Choose a golfer"
                     id="golfer"
                     placeholder="Search by name"
-                    onChange = {this.props.golferOnChange}
+                    onChange = {this.props.onChange}
                     />
                 </div>
-                <ul id="search-results"></ul>
+              <ul id={'search-results'}></ul>
 
                 <div className="pt-3">
                     <InputTextField

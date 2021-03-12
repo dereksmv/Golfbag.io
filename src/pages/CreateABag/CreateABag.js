@@ -1,5 +1,5 @@
 import React, {Component, useState} from 'react'
-
+import ReactDOM from 'react-dom'
 import HeaderOne from "../../components/headers/HeaderOne"
 import SelectTourneyandPlayer from "./PageComponents/SelectTourneyandPlayer"
 import AddClubForm from "./PageComponents/AddClubForm"
@@ -7,6 +7,8 @@ import InputTextField from '../../components/forms/inputTextField'
 import AddClubButtons from "./PageComponents/AddClubButtons"
 
 import Axios from "axios"
+import AutocompleteListItem from "../../components/autocomplete/AutocompleteListItem";
+import AutocompleteList from "../../components/autocomplete/AutocompleteList";
 
 const CreateABag = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -18,34 +20,38 @@ const CreateABag = () => {
   const [shaft, setShaft] = useState('');
 
   const suggestedSearch = () => {
-    let listContainer = document.getElementById("search-results");
-    listContainer.innerHTML = "";
+    //const listContainer = document.getElementById("search-results");
+    //listContainer.innerHTML = "";
+    console.log(searchResults);
     if (searchResults.length > 0) {
-      for (const i = 0; i < searchResults.length; i++) {
-        let listItem = document.createElement("li");
-        listItem.textContent = searchResults[i].first_name + " " + searchResults[i].last_name;
-        listContainer.appendChild(listItem);
-      }
+      searchResults.forEach((searchResult, index) => {
+        //const listItem = React.createElement('AutocompleteListItem', {name: searchResult});
+        //const rend = ReactDOM.render(listItem);
+        //listContainer.appendChild(rend);
+      });
     }
   }
 
   const textSearch = (e) => {
-    // const listContainer = document.getElementById("search-results");
-    // listContainer.innerHTML = "";
-    // Axios.get("/api/golfers/find", {
-    //   params: {
-    //     searchParams: e.target.value
-    //   }
-    // })
-    //   .then(res => {
-    //     if (res.data.length > 0) {
-    //       setSearchResults(res.data);
-    //       // Hmm.
-    //       suggestedSearch();
-    //     } else {
-    //       return;
-    //     }
-    //   })
+    setSearchResults([]);
+     console.log('textSearch', e.target.value);
+    //const listContainer = document.getElementById("search-results");
+    //listContainer.innerHTML = "";
+    Axios.get(`/api/golfers/all`, {
+    //Axios.get(`/api/golfers/find?searchParams=${e.target.value}`, {
+      // params: {
+      //   searchParams: e.target.value
+      // }
+    })
+      .then(res => {
+        if (res.data.length > 0) {
+          setSearchResults(res.data);
+          // Hmm.
+          suggestedSearch();
+        } else {
+          return;
+        }
+      })
   }
 
   const handleNameOptions = (e, params) => {
@@ -142,17 +148,31 @@ const CreateABag = () => {
     //
     //   }
     // )
+    return false;
   }
 
   return (
     <div className="flex flex-col max-w-sm container mx-auto">
       <div>
         <HeaderOne text="Create New Bag"/>
-        <SelectTourneyandPlayer
-          golferOnChange={(e) => {
-            textSearch(e)
-          }}
-        />
+        <div id="playerInfoField" className="pt-3">
+          <InputTextField
+            name="golfer"
+            label="Choose a golfer"
+            id="golfer"
+            placeholder="Search by name"
+            onChange = {(e) => textSearch(e)}
+          />
+        </div>
+        <div className="pt-3">
+          <InputTextField
+            name="tournament"
+            label="Choose a tournament"
+            id="tournament"
+            placeholder="Search by tournament"
+          />
+        </div>
+        <AutocompleteList results={searchResults} />
         <div className="flex w-1/3 py-3">
           <InputTextField label="Tournament Year" placeholder="Enter Year"/>
         </div>
@@ -171,7 +191,7 @@ const CreateABag = () => {
         <AddClubButtons/>
       </div>
       {/*Below is spacing for the navbar on mobile*/}
-      <div class="h-20"/>
+      <div className={"h-20"} />
     </div>
   )
 }; export default CreateABag;
