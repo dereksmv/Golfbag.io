@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import FilteredView from "../navigation/FilteredView"
 
-class playerCard extends React.Component {
+class PlayerCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -709,4 +709,4 @@ class playerCard extends React.Component {
 
 }
 
-export default playerCard;
+export default PlayerCard;

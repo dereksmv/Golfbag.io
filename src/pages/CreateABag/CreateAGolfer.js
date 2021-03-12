@@ -18,7 +18,6 @@ export default class CreateAGolfer extends Component {
 
         /*event handler for onchange events*/
         handleChange(e) {
-          
             this.setState({
                 [e.target.id]: e.target.value
             })
