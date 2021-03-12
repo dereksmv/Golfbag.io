@@ -1,18 +1,13 @@
 import React from 'react';
 import {BottomNavigation, BottomNavigationAction, Fab} from "@material-ui/core";
 import NavGolf from "../icons/NavGolf";
-import {AddAlertOutlined, AddOutlined} from "@material-ui/icons";
+import {AddOutlined} from "@material-ui/icons";
 import styled from 'styled-components';
 import NavAccount from "../icons/NavAccount";
 import NavTournament from "../icons/NavTournament";
 import NavMenu from "../icons/NavMenu";
 
 const MainNav = () => {
-
-  const StyledIconGroup = styled.div`
-    background: ${props => props.primary ? "palevioletred" : "white"};
-    color: ${props => props.primary ? "white" : "palevioletred"};
-  `;
 
   const StyledBottomNav = styled(BottomNavigation)`
     position: fixed;
