@@ -170,7 +170,7 @@ a {
 }
 
 /*  Start of Tablet Portrait Breakpoint */
-@media only screen and (min-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .main-wrapper {
     max-width: 768px;
   }
