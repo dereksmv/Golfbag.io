@@ -71,10 +71,18 @@ p {
 }
 .rounded-input:focus {
   border: .1rem solid #00e55c;
-
+}
+#mce-responses {
+  margin-top: 16px;
+  font-family: 'Barlow', sans-serif;
+  color: #393939;
+  position: absolute;
+  width: 50%;
+  font-size: .75rem;
 }
 .input-wrapper  {
   padding-top: 40px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
 }
@@ -85,7 +93,7 @@ p {
   position: absolute;
   height: 50px;
   width: 140px;
-  margin-top: -5px;
+  margin-top: -45px;
   border-radius: 2em;
   border: 0px;
   background: linear-gradient(180deg, #00e55c, #18BF5B);
@@ -113,10 +121,10 @@ p {
   background-size: cover;
   box-shadow: 0px 0px 25px #18BF5B29;
   border-radius: 16px;
-  border: none;
+  border: 1px solid #ffffff;
 }
 .section-wrapper {
-  padding-top: 175px;
+  padding-top: 145px;
   outline: none;
 
 }
@@ -145,6 +153,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('https://media-exp1.licdn.com/dms/image/C4E03AQEgsCvi1c0_Fw/profile-displayphoto-shrink_800_800/0/1610846710825?e=1616630400&v=beta&t=R6sE21f9vfGCNtdKSVsFl26MHZrZcvWNT2hT11_eEDQ');
+  border: 1px solid #e5e5e5;
 }
 #derek-img {
   border-radius: 55px;
@@ -153,6 +162,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('https://media-exp1.licdn.com/dms/image/C5603AQH2ONdStDyFvg/profile-displayphoto-shrink_200_200/0/1516891497654?e=1616630400&v=beta&t=CrkFI86uEbfHiuAfIb0pQHS3H2lTpgKkKrkAzZVqPzY');
+  border: 1px solid #e5e5e5;
 }
 #daniel-img {
   border-radius: 55px;
@@ -161,6 +171,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('https://media-exp1.licdn.com/dms/image/C5603AQHZx8VLu1RjmQ/profile-displayphoto-shrink_200_200/0/1554870379397?e=1620864000&v=beta&t=o4Mx5uoHu1hKfOhvGOkvqRG9lXIC7tPA6L4pvDwBsk0');
+  border: 1px solid #e5e5e5;
 }
 .profile-text {
   padding-left: 70px;
@@ -200,6 +211,9 @@ a {
   }
   .section-wrapper {
     margin-top: 250px;
+  }
+  #mce-responses {
+    width: 80%;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -250,5 +264,9 @@ a {
   .col-2 {
     margin-top: 0;
     margin-bottom: 0;
+  }
+  #mce-responses {
+    padding-top: 50px;
+    width: 100%;
   }
 }
