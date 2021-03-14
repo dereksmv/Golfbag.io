@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap');
+
 * {
   margin: 0;
 }
@@ -10,11 +12,21 @@ h1 {
   font-size: 1.75em;
   color: #393939;
 }
+h3 {
+  font-family: 'Barlow', sans-serif;
+}
+h4 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: bold;
+}
+p {
+  font-family: 'Barlow', sans-serif;
+}
 .main-h1 {
   padding-bottom: 20px;
 }
 p {
-  font-famil: Barlow, sans-serif;
+  font-family: Barlow, sans-serif;
   font-weight: medium;
   font-size: 1em;
   line-height: 1.4em;
@@ -126,7 +138,6 @@ p {
 .section-wrapper {
   padding-top: 145px;
   outline: none;
-
 }
 .section-wrapper h3 {
   margin-top: -25px;
