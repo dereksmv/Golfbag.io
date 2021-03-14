@@ -9,6 +9,8 @@ import AddClubButtons from "./PageComponents/AddClubButtons"
 import Axios from "axios"
 import AutocompleteListItem from "../../components/autocomplete/AutocompleteListItem";
 import AutocompleteList from "../../components/autocomplete/AutocompleteList";
+import {Container} from "@material-ui/core";
+import styled from "styled-components";
 
 const CreateABag = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -152,32 +154,30 @@ const CreateABag = () => {
   }
 
   return (
-    <div className="flex flex-col max-w-sm container mx-auto">
+    <Container>
       <div>
         <HeaderOne text="Create New Bag"/>
-        <div id="playerInfoField" className="pt-3">
+        <InputTextField
+          classes={'add-margin-2x'}
+          name="golfer"
+          label="Golfer"
+          id="golfer"
+          placeholder="Search by name"
+          onChange = {(e) => textSearch(e)}
+        />
+        <AutocompleteList results={searchResults} />
+        <div className="">
           <InputTextField
-            name="golfer"
-            label="Choose a golfer"
-            id="golfer"
-            placeholder="Search by name"
-            onChange = {(e) => textSearch(e)}
-          />
-        </div>
-        <div className="pt-3">
-          <InputTextField
+            classes={'add-margin-2x'}
             name="tournament"
-            label="Choose a tournament"
+            label="Tournament"
             id="tournament"
             placeholder="Search by tournament"
           />
         </div>
-        <AutocompleteList results={searchResults} />
-        <div className="flex w-1/3 py-3">
-          <InputTextField label="Tournament Year" placeholder="Enter Year"/>
-        </div>
-        <div className="space-y-4">
+        <div className="">
           <AddClubForm
+            hidden={true}
             onChange={(e) => handleOptions(e)}
             manufacturerOptions={manufacturerOptions}
             manufacturerOnChange={(e) => handleBrandOptions(e, e.target.value)}
@@ -190,8 +190,6 @@ const CreateABag = () => {
         </div>
         <AddClubButtons/>
       </div>
-      {/*Below is spacing for the navbar on mobile*/}
-      <div className={"h-20"} />
-    </div>
+    </Container>
   )
 }; export default CreateABag;

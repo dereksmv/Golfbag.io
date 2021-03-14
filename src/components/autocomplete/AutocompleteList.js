@@ -6,7 +6,14 @@ const AutocompleteList = (props) => {
   }
   return (
     <ul id={'search-results'}>
-      {props.results.map(res => <li>{res.first_name}</li>)}
+      {props.results && props.results.map(res =>
+        <li>
+          <div>
+            <img src="https://www.placehold.it/100x100" />
+            <p>{res.first_name} {res.last_name}</p>
+          </div>
+        </li>
+      )}
     </ul>
   );
 };

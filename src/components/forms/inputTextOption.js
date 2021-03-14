@@ -43,6 +43,7 @@ class InputTextOption extends React.Component {
             return false
         }
     }
+        return false;
 }
  
 
@@ -67,8 +68,9 @@ class InputTextOption extends React.Component {
                     name={this.props.name}
                     onChange={this.props.onChange}
                     onBlur={this.props.onBlur}
-                    class="w-full form-select h-full pl-2 pr-7 border rounded-md shadow-sm py-2 px-3 text-gray-700">
-                        <option disabled selected>{this.props.defaultText}</option>
+                    defaultValue={'default'}
+                    className={"w-full form-select h-full pl-2 pr-7 border rounded-md shadow-sm py-2 px-3 text-gray-700"}>
+                        <option disabled value={'default'}>{this.props.defaultText}</option>
                 </select>
             </div>
 
