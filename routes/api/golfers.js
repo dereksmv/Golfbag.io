@@ -5,6 +5,7 @@ const path = require("path");
 const countries = require("../../config/countries")
 
 const Golfer = require("../../models/Golfers")
+const PlayerUpload = require("../../models/PlayerUpload");
 
 const golfer = require("../../services/golfers")
 const db = require("../../services/databaseCalls")
@@ -18,7 +19,9 @@ var uploadHandler = multer({
 
 
 
-router.post("/create/new", uploadHandler.single('player_image'), golfer.saveGolfer)
+router.post("/create/new", (req, res) => {
+    db.saveToDb(req, res, {url: req.body.url}, PlayerUpload);
+})
 
 router.get("/search/:first_name/:last_name", golfer.retrieveGolfer)
 

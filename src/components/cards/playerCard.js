@@ -621,7 +621,7 @@ class PlayerCard extends React.Component {
                     first_name.textContent = element.first_name.toUpperCase();
                     last_name.textContent = element.last_name;
                     sponsor.textContent = element.sponsorship || "NA";
-                    playerImage.src = "https://pga-tour-res.cloudinary.com/image/upload/c_fill,d_headshots_default.png,f_auto,g_face:center,h_350,q_auto,w_280/headshots_30925.png";
+                    playerImage.src = element.player_image;
                     rank.textContent = element.tour + " Rank: " + element.rank;
 
                     first_name.classList.add("text-green-500");
@@ -631,9 +631,9 @@ class PlayerCard extends React.Component {
 
                     cardBottomRow.style="display: grid; grid-template-columns: 50% 50%;"
                     tourType.style = "position: absolute; width: 16px; height: 21px; background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/7/77/PGA_Tour_logo.svg/1200px-PGA_Tour_logo.svg.png); background-repeat: no-repeat; background-size: contain; top: 8px; left: 8px;";
-                    playerImageContainer.style = "margin: auto; height: 100%; position: relative;display: flex;"
-                    listItem.style = "border-style: solid; border-width: 1px 0 3px 0px; border-color: #00e55c; height: 115px; width: 375px;"
-                    playerImage.style = "width: 100%; height: 112px; margin: auto;";
+                    playerImageContainer.style = "margin: auto; height: 100%; max-width: 100%; position: relative;display: flex; overflow:hidden;"
+                    listItem.style = "border-style: solid; overflow:hidden; border-width: 1px 0 3px 0px; border-color: #00e55c; height: 110px; width: 375px;"
+                    playerImage.style = "max-width: 100%; max-height: auto; margin: auto; ";
                     first_name.style="font-size: 18px; text-transform: uppercase; color: #00e55c; padding-top: 8px;"
                     last_name.style = "font-size: 40px; text-transform: uppercase; color: #606060; margin-top: -10px;"
                     rank.style = "font-size: 16px; color: #7c7c7c; bottom: 4px; right: 16px;"
