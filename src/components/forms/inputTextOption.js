@@ -34,6 +34,8 @@ class InputTextOption extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
+    
+        if (nextProps.options != undefined) {
         for (var i = 0; i < nextProps.options.length; i++) {
             if (this.props.options === undefined) {
                 return true
@@ -41,11 +43,14 @@ class InputTextOption extends React.Component {
             if (this.props.options[i] !== nextProps.options[i]) {
                 return true
             }
+
          else {
-            return false
+            return false;
         }
     }
+    } else {
         return false;
+    }
 }
  
 
