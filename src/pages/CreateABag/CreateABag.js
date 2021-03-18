@@ -9,8 +9,10 @@ import AddClubButtons from "./PageComponents/AddClubButtons"
 import Axios from "axios"
 import AutocompleteListItem from "../../components/autocomplete/AutocompleteListItem";
 import AutocompleteList from "../../components/autocomplete/AutocompleteList";
-import {Container} from "@material-ui/core";
+import {Button, Container, Dialog, Grid, Modal} from "@material-ui/core";
 import styled from "styled-components";
+import MainButton from "../../components/buttons/mainButton";
+import SecondaryButton from "../../components/buttons/secondaryButton";
 
 const CreateABag = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -20,19 +22,8 @@ const CreateABag = () => {
   const [clubNameOptions, setClubNameOptions] = useState([]);
   const [length, setLength] = useState('');
   const [shaft, setShaft] = useState('');
-
-  const suggestedSearch = () => {
-    //const listContainer = document.getElementById("search-results");
-    //listContainer.innerHTML = "";
-    console.log(searchResults);
-    if (searchResults.length > 0) {
-      searchResults.forEach((searchResult, index) => {
-        //const listItem = React.createElement('AutocompleteListItem', {name: searchResult});
-        //const rend = ReactDOM.render(listItem);
-        //listContainer.appendChild(rend);
-      });
-    }
-  }
+  const [addClubModelOpen, setAddClubMmodelOpen] = useState(false);
+  const [clubs, setClubs] = useState([]);
 
   const textSearch = (e) => {
     setSearchResults([]);
@@ -48,115 +39,54 @@ const CreateABag = () => {
       .then(res => {
         if (res.data.length > 0) {
           setSearchResults(res.data);
-          // Hmm.
-          suggestedSearch();
         } else {
           return;
         }
       })
   }
 
-  const handleNameOptions = (e, params) => {
-    // let searchParam = params
-    // this.setState({
-    //     club_name: searchParam
-    //   }, function () {
-    //     Axios.get(`/api/golf_clubs/search/${this.state.club_type}/${this.state.brand_name}/${searchParam}`)
-    //       .then(res => {
-    //
-    //         this.setState(
-    //           res.data[0]
-    //         )
-    //         let selectField = document.getElementById("club_name")
-    //         selectField.innerHTML = '';
-    //         let club_names = [];
-    //         for (var i = 0; i < res.data.length; i++) {
-    //           if (res.data.length > 0) {
-    //             if (club_names.includes(res.data[i].brand_name) === false) {
-    //               club_names.push(res.data[i].club_name)
-    //               let newOption = document.createElement("option");
-    //               newOption.id = res.data[i].brand_name;
-    //               newOption.textContent = res.data[i].club_name
-    //               selectField.appendChild(newOption)
-    //             }
-    //           }
-    //         }
-    //       })
-    //   }
-    // )
+
+  const handleClubModelOpen = () => {
+    setAddClubMmodelOpen(true);
   }
 
-  const handleBrandOptions = (e, params) => {
-    // let searchParam = params
-    // this.setState({
-    //     brand_name: searchParam
-    //   }, function () {
-    //     Axios.get(`/api/golf_clubs/search/${this.state.club_type}/${searchParam}/NULL`)
-    //       .then(res => {
-    //         let selectField = document.getElementById("brand_name")
-    //         selectField.innerHTML = '';
-    //         let brand_names = [];
-    //
-    //         for (var i = 0; i < res.data.length; i++) {
-    //           if (res.data.length > 0) {
-    //             if (brand_names.includes(res.data[i].brand_name) === false) {
-    //               brand_names.push(res.data[i].brand_name)
-    //               let newOption = document.createElement("option");
-    //               newOption.id = res.data[i].brand_name;
-    //               newOption.textContent = res.data[i].brand_name
-    //               selectField.appendChild(newOption)
-    //             }
-    //           }
-    //           if (res.data[0].club_name !== undefined) {
-    //             let initialValue = res.data[0].brand_name
-    //             this.handleNameOptions(e, initialValue)
-    //           }
-    //
-    //         }
-    //       })
-    //
-    //   }
-    // )
+  const handleClubModelClose = () => {
+    setAddClubMmodelOpen(false);
   }
 
-  const handleOptions = (e) => {
-    // let searchParam = e.target.value
-    // this.setState({
-    //     [e.target.id]: searchParam
-    //   }, function () {
-    //     Axios.get(`/api/golf_clubs/search/${searchParam}`)
-    //       .then(res => {
-    //         let selectField = document.getElementById("manufacturer")
-    //         selectField.innerHTML = '';
-    //         let manufacturers = []
-    //         for (var i = 0; i < res.data.length; i++) {
-    //           if (res.data.length > 0) {
-    //             if (manufacturers.includes(res.data[i].manufacturer) === false) {
-    //               if (res.data[i].manufacturer !== searchParam) {
-    //                 manufacturers.push(res.data[i].manufacturer)
-    //                 let newOption = document.createElement("option");
-    //                 newOption.id = res.data[i].manufacturer;
-    //                 newOption.textContent = res.data[i].manufacturer
-    //                 selectField.appendChild(newOption)
-    //               }
-    //             }
-    //             if (res.data[0].manufacturer !== undefined) {
-    //               let initialValue = res.data[0].manufacturer
-    //               this.handleBrandOptions(e, initialValue)
-    //             }
-    //           }
-    //         }
-    //       })
-    //
-    //   }
-    // )
-    return false;
+  const handleSave = () => {
+    let existingClubs = clubs;
+    existingClubs.push({
+      clubName
+    });
+    setClubs(existingClubs);
+    setAddClubMmodelOpen(false);
   }
+
+  const handleClubChange = (e) => {
+    console.log(e.target);
+    setClubName(e.target.value);
+  }
+
+  const addClubForm = (
+    <Container>
+    <AddClubForm
+      hidden={true}
+      manufacturerOptions={manufacturerOptions}
+      brandOptions={brandOptions}
+      clubNameOptions={clubNameOptions}
+      length={length}
+      clubOnChange = {(e) => handleClubChange(e)}
+      shaft={shaft}
+    />
+    </Container>
+  );
 
   return (
     <Container>
-      <div>
-        <HeaderOne text="Create New Bag"/>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <HeaderOne text="Create New Bag"/>
         <InputTextField
           classes={'add-margin-2x'}
           name="golfer"
@@ -166,7 +96,6 @@ const CreateABag = () => {
           onChange = {(e) => textSearch(e)}
         />
         <AutocompleteList results={searchResults} />
-        <div className="">
           <InputTextField
             classes={'add-margin-2x'}
             name="tournament"
@@ -174,22 +103,24 @@ const CreateABag = () => {
             id="tournament"
             placeholder="Search by tournament"
           />
-        </div>
-        <div className="">
-          <AddClubForm
-            hidden={true}
-            onChange={(e) => handleOptions(e)}
-            manufacturerOptions={manufacturerOptions}
-            manufacturerOnChange={(e) => handleBrandOptions(e, e.target.value)}
-            brandOptions={brandOptions}
-            clubNameOptions={clubNameOptions}
-            length={length}
-            shaft={shaft}
-          />
-
-        </div>
-        <AddClubButtons/>
-      </div>
+        </Grid>
+        {clubs && clubs.map(club => <p>{club.clubName}</p>)}
+        <Button onClick={() => handleClubModelOpen()}>Add club</Button>
+        <Dialog
+          open={addClubModelOpen}
+          close={handleClubModelClose}
+        >
+          {addClubForm}
+          <Button onClick={(e) => handleSave(e)}>Save</Button>
+        </Dialog>
+        {/*<Modal*/}
+        {/*  open={addClubModelOpen}*/}
+        {/*  close={handleClubModelClose}*/}
+        {/*  BackdropProps={{ style: { backgroundColor: "#edf2f7", overflow: "auto" } }}*/}
+        {/*>*/}
+        {/*  {addClubForm}*/}
+        {/*</Modal>*/}
+      </Grid>
     </Container>
   )
 }; export default CreateABag;

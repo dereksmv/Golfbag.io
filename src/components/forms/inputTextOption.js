@@ -1,4 +1,6 @@
 import React from 'react';
+import {FormControl, InputLabel, Select} from "@material-ui/core";
+import styled from "styled-components";
 
 
 class InputTextOption extends React.Component {
@@ -53,27 +55,26 @@ class InputTextOption extends React.Component {
     }
 
     render() {
-        
-
+        const StyledFormControl = styled(FormControl)`
+          width:100%;
+        `;
         return(
-            <div>
-              
-                <label 
-                    htmlFor={this.props.name}
-                    className="flex text-sm mx-2 font-semibold text-gray-700">
-                    {this.props.label}
-                </label>
-                <select 
-                    id={this.props.id}
-                    name={this.props.name}
-                    onChange={this.props.onChange}
-                    onBlur={this.props.onBlur}
-                    defaultValue={'default'}
-                    className={"w-full form-select h-full pl-2 pr-7 border rounded-md shadow-sm py-2 px-3 text-gray-700"}>
-                        <option disabled value={'default'}>{this.props.defaultText}</option>
-                </select>
-            </div>
-
+        <StyledFormControl variant="outlined">
+            <InputLabel htmlFor={this.props.id}>{this.props.label}</InputLabel>
+            <Select
+              native
+              defaultValue={'default'}
+              //onChange={handleChange}
+              label={this.props.label}
+              inputProps={{
+                  name: this.props.label,
+                  id: this.props.id,
+              }}
+            >
+                <option aria-label="None" value="" />
+                {this.props.options.map(option => <option>{option}</option>)}
+            </Select>
+        </StyledFormControl>
         )
     }
 }

@@ -2,118 +2,101 @@ import React, { Component } from 'react'
 import HeaderTwo from "../../../components/headers/HeaderTwo"
 import InputTextOptions from "../../../components/forms/inputTextOption"
 import InputTextField from "../../../components/forms/inputTextField"
+import {Box, Container, Grid, StyledComponentProps} from "@material-ui/core";
+import styled from "styled-components";
+import { StylesProvider } from '@material-ui/core/styles';
 
-export default class AddClubForm extends Component {
-    render() {
-        let clubs = ["Driver", "3-Wood", "2 Iron", "3 Iron", "4 Iron", "5 Iron", "6 Iron", "7 Iron", "8 Iron", "9 Iron", "Wedge", "Putter"]
-        return (
-            <div>
-                <HeaderTwo text="Add club to bag"/>
+const AddClubForm = (props) => {
+  const clubs = ["Driver", "3-Wood", "2 Iron", "3 Iron", "4 Iron", "5 Iron", "6 Iron", "7 Iron", "8 Iron", "9 Iron", "Wedge", "Putter"];
+  const shaftModelOptions = ['Shaft Option'];
+  const manufacturerOptions = ['Manufacturer Option'];
+  const modelOptions = ['Model Option'];
+  const loftAngleOptions = ['Loft Angle Option'];
+  const shaftManufacturerOptions = ['Shaft Manu Option'];
+  const StyledInputTextOptions = styled(InputTextOptions)`
+    && { 
+      margin-top:8px!important;
+    } 
+  `;
+  const Spacer = styled.div`
+    margin-top: 12px;
+  `;
+    return (
+      <StylesProvider injectFirst>
+      <Container>
+            <Grid container spacing={3}>
+                  <HeaderTwo text="Add club to bag"/>
+              <Grid item xs={12}>
                 <InputTextOptions
                 name="club-form"
                 label="Select a club"
                 id="club_type"
-                defaultText="Please select a club"
+                defaultText="Driver, 3Wood, Putter etc"
                 options = {clubs}
-                onChange={this.props.onChange}
+                onChange={props.clubOnChange}
                 />
+              </Grid>
+              <Grid item xs={12}>
                 <InputTextOptions
                 name="manufacturer"
-                label="Find club manufacturer"
+                label="Search manufacturers"
                 id="manufacturer"
-                options = {this.props.manufacturerOptions}
-                onChange = {this.props.manufacturerOnChange}
-                defaultText="Please select a club"
+                options = {manufacturerOptions}
+                onChange = {props.manufacturerOnChange}
+                defaultText="Search manufacturers"
                 />
+              </Grid>
+              <Grid item xs={12}>
                 <InputTextOptions 
-                name="brand_name"
-                label="Club brand name"
-                id="brand_name"
-                options= {this.props.brandOptions}
-                onChange = {this.props.brandOnChange}
-                defaultText="Please select a club"
+                name="model"
+                label="Search model"
+                id="model_name"
+                options= {modelOptions}
+                onChange = {modelOptions}
+                defaultText="Search model"
                 />
+              </Grid>
+              <Grid item xs={12}>
                 <InputTextOptions
-                name="club_name"
-                label="Club Name"
-                id="club_name"
-                options={this.props.clubNameOptions}
-                onChange={this.props.clubNameOnChange}
-                defaultText="Please select a club"
+                name="loft-angle"
+                label="Select loft angle in degrees"
+                id="loft_angle"
+                options={loftAngleOptions}
+                onChange={props.loftAngleOnChange}
+                defaultText="Select loft angle in degrees"
                 />
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Lie Angle" placeholder="Lie Angle"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Loft Angle" placeholder="Loft Angle"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Length" placeholder="Length"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Adjustment" placeholder="Adjustment"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Offset (Wedge Only)" placeholder="Offset"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Grind Type (Wedge Only)" placeholder="Grind Type"/>
-                            </div>
-                        </div>
-                        <InputTextField label="Shaft Brand Name" placeholder="Enter Shaft Brand Name"/>
-                        <InputTextField label="Shaft Name" placeholder="Enter Shaft Name"/>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Flex" placeholder="Enter Flex"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Weight" placeholder="Enter Weight"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Length" id="length" value={this.props.length} placeholder="Length"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Torque" placeholder="Torque"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Tip" placeholder="Enter Tip"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Launch Angle" placeholder="Low/Mid/High"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Shaft Material" value={this.props.shaft}/>
-                            </div>
-                        </div>
-                        <InputTextField label="Grip Brand Name" placeholder="Enter Grip Brand Name"/>
-                        <InputTextField label="Grip Name" placeholder="Enter Grip Name"/>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Grip Diameter" placeholder="Enter Grip Diameter"/>
-                            </div>
-                            <div className="flex w-1/2 pl-2">
-                                <InputTextField label="Wrap Type" placeholder="Enter Wrap Type"/>
-                            </div>
-                        </div>
-                        <div className="flex flex-row">
-                            <div className="flex w-1/2 pr-2">
-                                <InputTextField label="Core (Putter Only)" placeholder="Putter Core Type"/>
-                            </div>
-                        </div>
-                        <InputTextField label="Ball Brand Name" placeholder="Enter Ball Brand Name"/>
-                        <InputTextField label="Ball Name" placeholder="Enter Ball Name"/>
-            </div>
+              </Grid>
+              <Grid item xs={12}>
+                  <InputTextOptions
+                    name="shaft-manufacturer"
+                    label="Search Shaft manufacturers"
+                    id="shaft_manufacturer"
+                    options={shaftManufacturerOptions}
+                    onChange={props.shaftManufacturerOnChange}
+                    defaultText="Search Shaft manufacturers"
+                  />
+              </Grid>
+              <Grid item xs={12}>
+                  <InputTextOptions
+                    name="shaft-model"
+                    label="Search Shaft model"
+                    id="shaft_model"
+                    options={shaftModelOptions}
+                    onChange={props.shaftModelOnChange}
+                    defaultText="Search Shaft model"
+                  />
+              </Grid>
+              <Grid item xs={12}>
+                  <InputTextField
+                    name="club-image"
+                    label="Enter URL for club image"
+                    id="club_image"
+                    onChange={props.clubImageOnChange}
+                    defaultText="Enter URL for club image"
+                  />
+              </Grid>
+            </Grid>
+      </Container>
+      </StylesProvider>
         )
-    }
-}
+}; export default AddClubForm;
