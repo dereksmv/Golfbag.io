@@ -6,6 +6,7 @@ import CreateAGolfer from './pages/CreateABag/CreateAGolfer';
 import PlayersView from "./pages/CreateABag/PlayersView"
 import {Container} from "@material-ui/core";
 import Header from "./components/layout/Header";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
@@ -14,11 +15,11 @@ function App() {
       <main>
         <Container>
           <Router>
+            <Route path="/" component={Homepage} exact />
             <Route path="/create/Bag" component={CreateABag}/>
             <Route path="/create/Golfer" component={CreateAGolfer}/>
             <Route path="/players" component={PlayersView}/>
           </Router>
-          <p>Homepage...</p>
         </Container>
       </main>
       <MainNav/>
