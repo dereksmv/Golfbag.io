@@ -18,8 +18,5 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<< HEAD
-node_modules
-=======
 prepros.config*
->>>>>>> db8d9fb1432d3ceb04bc4e4e414f7ca4e2f68d4b
+src/components/autocomplete/desktop.ini
