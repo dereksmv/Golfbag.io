@@ -30,6 +30,7 @@ const GolferCard = (props) => {
     color: #18BF5B;
     text-transform: uppercase;
     font-size: 18px;
+    font-family: "Barlow Condensed", "Helvetica", "Arial", sans-serif;
   `;
   const StyledLastName = styled(Typography)`
     grid-row: 2/3;
@@ -38,6 +39,7 @@ const GolferCard = (props) => {
     color: #585858;
     text-transform: uppercase;
     font-size: 32px;
+    font-family: "Barlow Condensed", "Helvetica", "Arial", sans-serif;
   `;
   const StyledSponser = styled(Typography)`
     grid-row: 3/4;
@@ -45,6 +47,7 @@ const GolferCard = (props) => {
     letter-spacing: 0px;
     color: #585858;
     font-size: 16px;
+    font-family: "Barlow Condensed", "Helvetica", "Arial", sans-serif;
   `;
   const StyledRank = styled(Typography)`
     grid-row: 3/4;
@@ -52,6 +55,7 @@ const GolferCard = (props) => {
     letter-spacing: 0px;
     color: #585858;
     font-size: 16px;
+    font-family: "Barlow Condensed", "Helvetica", "Arial", sans-serif;
   `;
   return (
   <StyledCard variant="outlined">
