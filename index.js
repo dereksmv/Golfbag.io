@@ -12,6 +12,7 @@ const path = require("path")
 const golfclubs = require("./routes/api/golfclubs")
 const tournaments = require("./routes/api/tournaments");
 const golfbag = require("./routes/api/golfbags")
+const homepage = require("./routes/api/homepage")
 const app = express();
 // Bodyparser middleware
 app.use(
@@ -37,9 +38,12 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(express.static(path.join(__dirname + "/uploads")))
 
+
+/*
 app.get('/', (req,res) =>{
   res.sendFile(path.join(__dirname+'/build/index.html'));
 });
+*/
 
 app.use("/api/golf_clubs", golfclubs);
 
@@ -48,6 +52,8 @@ app.use("/api/golfers", golfer)
 app.use("/api/tournaments", tournaments)
 
 app.use("/api/golfbag", golfbag)
+
+app.use("/api/homepage", homepage);
 
 app.get('*', function(req, res) {
   return res.sendFile(path.resolve( __dirname, 'build' , 'index.html'));
