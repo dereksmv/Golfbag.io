@@ -56,8 +56,10 @@ const Homepage = () => {
   `;
   const StyledWrapper = styled.div`
     margin-top: 16px;
-    margin-left: 170px;
     margin-right: 48px;
+    @media only screen and (min-width: ${theme.breakpoints.values.lg}px) {
+       margin-left: 170px;
+    }
   `;
   useEffect(() => {
     Axios.get(`/api/golfers/all`, {})
@@ -82,7 +84,7 @@ const Homepage = () => {
         </StyledDrawer>
       </Hidden>
       <Grid container spacing={4}>
-        {cardData.map(data => <StyledGridItem item xs={12} md={6} lg={3} xxl={3} ><GolferCard firstName={data.first_name} lastName={data.last_name} image={data.player_image} sponser={data.sponsorship} rank={data.rank} /></StyledGridItem>)};
+        {cardData.map(data => <StyledGridItem item xs={12} md={6} lg={4} xl={3} className={'MuiGrid-grid-xxl-1'}><GolferCard firstName={data.first_name} lastName={data.last_name} image={data.player_image} sponser={data.sponsorship} rank={data.rank} /></StyledGridItem>)};
       </Grid>
       <Hidden mdUp>
       <MainNav />

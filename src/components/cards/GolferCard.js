@@ -22,6 +22,9 @@ const GolferCard = (props) => {
       border-radius: 16px;
       background-color: ${theme.palette.background.light};
     }
+    @media only screen and (min-width: ${theme.breakpoints.values.lg}px) {
+       width: 325px;
+    }
   `;
   const StyledCardContent = styled(CardContent)`
     display:grid;

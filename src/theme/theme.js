@@ -26,10 +26,10 @@ const theme = createMuiTheme({
       xs: 0,
       sm: 400,
       md: 768,
-      lg: 960,
-      xl: 1280,
-      xxl: 1500,
-      mg: 1920
+      lg: 1300,
+      xl: 1600,
+      // xxl: 1500,
+      // mg: 1920
     },
   },
 });
