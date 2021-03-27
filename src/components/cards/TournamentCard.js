@@ -1,15 +1,15 @@
 import React from "react";
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
-import {Image} from "@material-ui/icons";
+import {logo} from "@material-ui/icons";
 import styled from "styled-components";
 import theme from "../../theme/theme";
 
-const GolferCard = (props) => {
-  const {firstName, lastName,  image, sponser, rank} = props;
+const TournamentCard = (props) => {
+  const {year, name,  logo, location, date} = props;
   const StyledCardMedia = styled(CardMedia)`
     height: 100px;
   `;
-  const StyledImage = styled.img`
+  const StyledLogo = styled.img`
     height: 80px;
     grid-column: 1/2;
     grid-row: 1/4;
@@ -25,7 +25,7 @@ const GolferCard = (props) => {
        width: 325px;
     }
     :hover {
-      box-shadow: 0 10px 0px 0px #00E55C;
+      box-shadow: 0 10px 0px 0px #0099FF;
     }
   `;
   const StyledCardContent = styled(CardContent)`
@@ -33,7 +33,7 @@ const GolferCard = (props) => {
     grid-template-columns: 108px auto auto;
     grid-template-rows: 22px 38px 20px
   `;
-  const StyledFirstName = styled(Typography)`
+  const StyledYear = styled(Typography)`
     grid-row: 1/2;
     grid-column: 2/4;
     text-transform: uppercase;
@@ -44,7 +44,7 @@ const GolferCard = (props) => {
       font-family: ${theme.fonts.barlow_condensed};
     }
   `;
-  const StyledLastName = styled(Typography)`
+  const StyledName = styled(Typography)`
     grid-row: 2/3;
     grid-column: 2/4;
     text-transform: uppercase;
@@ -54,7 +54,7 @@ const GolferCard = (props) => {
       font-family: ${theme.fonts.barlow_condensed};
     }
   `;
-  const StyledSponser = styled(Typography)`
+  const StyledLocation = styled(Typography)`
     grid-row: 3/4;
     grid-column: 2/3;
     && {
@@ -63,7 +63,7 @@ const GolferCard = (props) => {
       font-family: ${theme.fonts.barlow_condensed};
     }
   `;
-  const StyledRank = styled(Typography)`
+  const StyledDate = styled(Typography)`
     grid-row: 3/4;
     grid-column: 3/4;
     justify-self: flex-end;
@@ -74,22 +74,22 @@ const GolferCard = (props) => {
     }
   `;
   return (
-  <StyledCard variant="outlined">
-    <StyledCardContent>
-      <StyledImage src={"https://www.placehold.it/100x100"} />
-      <StyledFirstName color="textSecondary" gutterBottom>
-        {firstName}
-      </StyledFirstName>
-      <StyledLastName variant="h5" component="h2">
-        {lastName}
-      </StyledLastName>
-      <StyledSponser color="textSecondary">
-        {sponser}
-      </StyledSponser>
-      <StyledRank variant="body2" component="p">
-        Rank: {rank}
-      </StyledRank>
-    </StyledCardContent>
-  </StyledCard>
+    <StyledCard variant="outlined">
+      <StyledCardContent>
+        <StyledLogo src={"https://www.placehold.it/100x100"} />
+        <StyledYear color="textSecondary" gutterBottom>
+          {year}
+        </StyledYear>
+        <StyledName variant="h5" component="h2">
+          {name}
+        </StyledName>
+        <StyledLocation color="textSecondary">
+          {location}
+        </StyledLocation>
+        <StyledDate variant="body2" component="p">
+          {date}
+        </StyledDate>
+      </StyledCardContent>
+    </StyledCard>
   )
-}; export default GolferCard;
+}; export default TournamentCard;

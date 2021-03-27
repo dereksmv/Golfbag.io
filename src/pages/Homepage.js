@@ -5,6 +5,7 @@ import {Container, Drawer, Grid, Hidden, List, ListItem, ListItemText} from "@ma
 import styled from "styled-components";
 import MainNav from "../components/navigation/mainNav";
 import theme from "../theme/theme";
+import TournamentCard from "../components/cards/TournamentCard";
 
 const Homepage = () => {
   const [cardData, setCardData] = useState([]);
@@ -62,10 +63,17 @@ const Homepage = () => {
     }
   `;
   useEffect(() => {
-    Axios.get(`/api/golfers/all`, {})
+    Axios.get(`/api/homepage/data`, {})
       .then(res => {
         if (res.data.length > 0) {
-          setCardData(res.data);
+          let data = res.data.filter(apiData => apiData != null);
+          data = data.map(apiData => (apiData.type === 'golfer')
+            ?
+              (<StyledGridItem item xs={12} md={6} lg={4} xl={3} className={'MuiGrid-grid-xxl-1'}><GolferCard firstName={apiData.info.first_name} lastName={apiData.info.last_name} image={apiData.info.player_image} sponser={apiData.info.sponsorship} rank={apiData.info.rank} /></StyledGridItem>)
+            :
+            (<StyledGridItem item xs={12} md={6} lg={4} xl={3} className={'MuiGrid-grid-xxl-1'}><TournamentCard year={apiData.info.year} name={apiData.info.name} logo={apiData.info.player_image} location={apiData.info.city} date={apiData.info.date} /></StyledGridItem>)
+          )
+          setCardData(data);
         }
       });
   },[]);
@@ -84,7 +92,8 @@ const Homepage = () => {
         </StyledDrawer>
       </Hidden>
       <Grid container spacing={4}>
-        {cardData.map(data => <StyledGridItem item xs={12} md={6} lg={4} xl={3} className={'MuiGrid-grid-xxl-1'}><GolferCard firstName={data.first_name} lastName={data.last_name} image={data.player_image} sponser={data.sponsorship} rank={data.rank} /></StyledGridItem>)};
+        {cardData}
+        {/*{cardData.map(data => <StyledGridItem item xs={12} md={6} lg={4} xl={3} className={'MuiGrid-grid-xxl-1'}><GolferCard firstName={data.first_name} lastName={data.last_name} image={data.player_image} sponser={data.sponsorship} rank={data.rank} /></StyledGridItem>)};*/}
       </Grid>
       <Hidden mdUp>
       <MainNav />

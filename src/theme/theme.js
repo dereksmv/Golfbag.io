@@ -32,6 +32,9 @@ const theme = createMuiTheme({
       // mg: 1920
     },
   },
+  fonts: {
+    barlow_condensed: '"Barlow Condensed", "Helvetica", "Arial", sans-serif;'
+  }
 });
 
 export default theme;
