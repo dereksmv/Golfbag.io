@@ -1,3 +1,7 @@
+const Golfers = require("../models/Golfers");
+const Tournaments = require("../models/Tournaments");
+
+
 module.exports = {
     removeDashes: function(str) {return str.replace(/_/g, " ");},
 
@@ -67,7 +71,43 @@ module.exports = {
                 res.send(doc);
             }
         })
-    }
+    },
 
-    
+    generateHomePage: function(req, res) {
+        let golfers = [];
+        let tournaments = [];
+        function generateResponse(title, info) {
+            return {
+                type: title,
+                info: info
+            };
+        };
+        Golfers.find({},
+            (err, doc) => {
+                if (err) {
+                    console.log(err);
+                } if (doc) {
+                    doc.forEach(element => {
+                        golfers.push(generateResponse("golfer", element));     
+                    });
+                }
+                Tournaments.find({}, (err, doc) => {
+                    if (err) {console.log(err)}
+                    if (doc) {
+                        doc.forEach(element => {
+                            console.log(element);
+                            tournaments.push(generateResponse("tournament", element));
+                        })
+                        let response = [];
+                            for (let i = 0; i < 100; i++) {
+                                response.push(golfers[i], tournaments[i]);
+                            } 
+                            res.json(response);
+                    }
+                }).limit(50);
+                
+            }
+            ).limit(50);
+      
+        }
 }

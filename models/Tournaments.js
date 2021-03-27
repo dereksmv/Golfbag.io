@@ -41,6 +41,11 @@ const TournamentSchema = new Schema({
     winner: {
         type: String,
         required: false
+    },
+
+    archived: {
+        type: Boolean,
+        required: false
     }
 
 })
