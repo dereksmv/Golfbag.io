@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Card, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {Image} from "@material-ui/icons";
 import styled from "styled-components";
+import theme from "../../theme/theme";
 
 const GolferCard = (props) => {
   const {firstName, lastName,  image, sponser, rank} = props;
@@ -15,8 +16,12 @@ const GolferCard = (props) => {
     margin-right: 8px;
   `;
   const StyledCard = styled(Card)`
-    border-radius: 16px; 
     box-shadow: 0 10px 0px 0px #00E55C;
+    min-width: 325px;
+    && {
+      border-radius: 16px;
+      background-color: ${theme.palette.background.light};
+    }
   `;
   const StyledCardContent = styled(CardContent)`
     display:grid;
@@ -56,6 +61,7 @@ const GolferCard = (props) => {
     color: #585858;
     font-size: 16px;
     font-family: "Barlow", "Helvetica", "Arial", sans-serif;
+    justify-self: flex-end;
   `;
   return (
   <StyledCard variant="outlined">
